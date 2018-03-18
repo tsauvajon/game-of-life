@@ -5,7 +5,7 @@
     <div class="row" v-for="(row, i) in cells" :key="i">
       <span
         class="cell"
-        :style="`background: ${ cells[i][j] ? '#6534ff' : '#fff' }`"
+        :style="`background: ${ cells[i][j] ? '#c576db' : '#fff' }`"
         v-for="(cell, j) in row"
         :key="j"
         @click="toggle(i, j)"
@@ -16,8 +16,8 @@
   </div>
   <div class="controls">
     <button @click="next">NEXT</button>
-    <button @click="auto">AUTO</button>
-    <button @click="stop">STOP</button>
+    <button v-if="interval" @click="stop">STOP</button>
+    <button v-else @click="auto">PLAY</button>
     &nbsp;|&nbsp;
     <button @click="reset">Reset wave</button>
     &nbsp;|&nbsp;
@@ -105,7 +105,7 @@ export default {
 
     softClear () {
       this.cells = this.cells.map(row => row.map(cell => false))
-      this.reset()
+      this.generation = 0
     },
 
     random () {
@@ -118,12 +118,14 @@ export default {
     },
 
     auto () {
+      clearInterval(this.interval)
       const interval = setInterval(this.next, this.speed)
       this.interval = interval
     },
 
     stop () {
       clearInterval(this.interval)
+      this.interval = null
     },
 
     reset () {
@@ -349,7 +351,7 @@ export default {
     display: flex;
   }
   .cell {
-    border: .2px solid #6534ff1a;
+    border: .2px solid #c576db1a;
     padding: 0;
     margin: 0;
     /* height: 5px; */
@@ -361,5 +363,31 @@ export default {
   }
   .cell.filled {
     background: #000;
+  }
+  strong {
+    color: #8b81fc;
+  }
+  .controls {
+    margin-top: 20px;
+  }
+  button {
+    background: #8b81fc;
+    /* background: linear-gradient(20deg, #c576db, #8b81fc); */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Raleway';
+    font-size: 15px;
+    border: 2px solid transparent;
+    transition: all .6s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+  }
+  button:hover {
+    background: #fff;
+    border: 2px solid #8b81fc;
+    color: #8b81fc;
   }
 </style>
