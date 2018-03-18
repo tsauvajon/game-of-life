@@ -1,7 +1,7 @@
 <template>
-<div>
+<center>
+  <strong>wave : {{ generation }}</strong>
   <div class="board">
-    <strong>wave : {{ generation }}</strong>
     <div class="row" v-for="(row, i) in cells" :key="i">
       <span
         class="cell"
@@ -10,7 +10,7 @@
         :key="j"
         @click="toggle(i, j)"
       >
-        &nbsp;&nbsp;
+        &nbsp;
       </span>
     </div>
   </div>
@@ -46,7 +46,7 @@
     <button @click="next">Gosper Glider gun</button>
     <button @click="lineBeacon">Line to beacon</button>
   </div>
-</div>
+</center>
 </template>
 
 <script>
@@ -66,7 +66,6 @@ export default {
 
   methods: {
     toggle (i, j) {
-      console.log(i, ', ', j)
       this.cells[i][j] = !this.cells[i][j]
       this.$forceUpdate()
     },
@@ -342,16 +341,19 @@ export default {
 
 <style scoped>
   .board {
-    padding: 5px;
-    margin: 0;
+    padding: 0;
+    margin: auto;
     background: #fff;
   }
+  .row {
+    display: flex;
+  }
   .cell {
-    border: .2px solid whitesmoke;
+    border: .2px solid #6534ff1a;
     padding: 0;
     margin: 0;
-    height: 5px;
-    width: 5px;
+    /* height: 5px; */
+    width: 20px;
     cursor: pointer;
   }
   .cell.empty {
