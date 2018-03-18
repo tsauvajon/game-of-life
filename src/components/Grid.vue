@@ -15,9 +15,9 @@
     </div>
   </div>
   <div class="controls">
-    <button @click="next">NEXT</button>
-    <button v-if="interval" @click="stop">STOP</button>
-    <button v-else @click="auto">PLAY</button>
+    <button @click="next"><img src="../assets/skip-forward.svg" height="20" />&nbsp;<span>NEXT WAVE</span></button>
+    <button v-if="interval" @click="stop"><img src="../assets/pause.svg" height="20" />&nbsp;<span>STOP</span></button>
+    <button v-else @click="auto"><img src="../assets/play.svg" height="20" />&nbsp;<span>PLAY</span></button>
     &nbsp;|&nbsp;
     <button @click="reset">Reset wave</button>
     &nbsp;|&nbsp;
@@ -384,10 +384,15 @@ export default {
     border: 2px solid transparent;
     transition: all .6s;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+    vertical-align: middle;
   }
   button:hover {
     background: #fff;
     border: 2px solid #8b81fc;
     color: #8b81fc;
+  }
+  button > img,
+  button > span {
+    vertical-align: middle;
   }
 </style>
