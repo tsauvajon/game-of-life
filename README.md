@@ -2,6 +2,8 @@
 
 > Conway Game of Life
 
+[Demo](https://tsauvajon.github.io/game-of-life/)
+
 ## Build Setup
 
 ``` bash

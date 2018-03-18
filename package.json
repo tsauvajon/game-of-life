@@ -1,5 +1,6 @@
 {
   "name": "game-of-life",
+  "homepage": "https://tsauvajon.github.io/game-of-life/",
   "version": "1.0.0",
   "description": "Conway Game of Life",
   "author": "Thomas Sauvajon <thomas.sauvajon.dev@gmail.com>",
