@@ -1,8 +1,16 @@
 # game-of-life
 
-> Conway Game of Life
+> [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 [Demo](https://tsauvajon.github.io/game-of-life/)
+
+The rules of the game of life are simple :
+- A cell with too few (less than 2 - *underpopulation*) or too many (more than 3 - *overpopulation*) neighbours will die (change from colored to white)
+- A cell will spawn (change from with to colored) if it has 3 neighbours (*reproduction*)
+
+You can check some example patterns on [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns).
+
+More info on the Game of Life at [http://www.conwaylife.com](http://www.conwaylife.com).
 
 ## Build Setup
 
