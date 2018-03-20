@@ -52,6 +52,11 @@
     <button @click="schickEngine">Schick engine</button>
     <button @click="blinkerShip">Blinker ship</button>
   </div>
+  <div class="saves">
+    <button @click="load">Load</button>
+    <button @click="dump">Dump</button>
+    <textarea v-model="lifData" />
+  </div>
 </center>
 </template>
 
@@ -67,7 +72,8 @@ export default {
     cells: empty.map(row => row.map(cell => cell)),
     interval: null,
     speed: 1,
-    generation: 0
+    generation: 0,
+    lifData: ''
   }),
 
   methods: {
@@ -75,6 +81,17 @@ export default {
       console.log(`this.cells[${i}][${j}] = ${!this.cells[i][j]}`)
       this.cells[i][j] = !this.cells[i][j]
       this.$forceUpdate()
+    },
+
+    load () {
+      console.log(this.lifData)
+    },
+
+    dump () {
+      const lifData = this.cells.reduce((acc, row, i) =>
+        `${acc}${row.reduce((acc2, cell, j) => cell ? `${acc2}${j - (width / 2)} ${i - (height / 2)}\n` : acc2, '')}`,
+      '')
+      this.lifData = lifData
     },
 
     next () {
