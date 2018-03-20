@@ -43,8 +43,10 @@
     <button @click="diehard">Diehard</button>
     <button @click="acorn">Acorn</button>
     &nbsp;|&nbsp;
-    <button @click="next">Gosper Glider gun</button>
+    <button @click="gliderGun">Gosper Glider gun</button>
     <button @click="lineBeacon">Line to beacon</button>
+    <button @click="switchEngine">Switch engine</button>
+    <button @click="msgInABottle">Ship in a bottle</button>
   </div>
 </center>
 </template>
@@ -66,6 +68,7 @@ export default {
 
   methods: {
     toggle (i, j) {
+      console.log(`this.cells[${i}][${j}] = ${!this.cells[i][j]}`)
       this.cells[i][j] = !this.cells[i][j]
       this.$forceUpdate()
     },
@@ -329,6 +332,46 @@ export default {
       this.cells[24][35] = true
     },
 
+    gliderGun () {
+      this.softClear()
+      this.cells[18][16] = true
+      this.cells[18][17] = true
+      this.cells[19][17] = true
+      this.cells[19][16] = true
+      this.cells[19][26] = true
+      this.cells[18][26] = true
+      this.cells[20][26] = true
+      this.cells[21][27] = true
+      this.cells[17][27] = true
+      this.cells[16][28] = true
+      this.cells[16][29] = true
+      this.cells[22][28] = true
+      this.cells[22][29] = true
+      this.cells[21][31] = true
+      this.cells[20][32] = true
+      this.cells[19][32] = true
+      this.cells[18][32] = true
+      this.cells[17][31] = true
+      this.cells[19][33] = true
+      this.cells[19][30] = true
+      this.cells[18][36] = true
+      this.cells[17][36] = true
+      this.cells[16][36] = true
+      this.cells[16][37] = true
+      this.cells[17][37] = true
+      this.cells[18][37] = true
+      this.cells[19][38] = true
+      this.cells[15][38] = true
+      this.cells[14][40] = true
+      this.cells[15][40] = true
+      this.cells[19][40] = true
+      this.cells[20][40] = true
+      this.cells[16][50] = true
+      this.cells[16][51] = true
+      this.cells[17][51] = true
+      this.cells[17][50] = true
+    },
+
     lineBeacon () {
       this.softClear()
       this.cells[18][32] = true
@@ -336,6 +379,108 @@ export default {
       this.cells[18][34] = true
       this.cells[18][35] = true
       this.cells[18][36] = true
+    },
+
+    switchEngine () {
+      this.softClear()
+      this.cells[25][38] = true
+      this.cells[25][37] = true
+      this.cells[25][36] = true
+      this.cells[24][37] = true
+      this.cells[22][36] = true
+      this.cells[22][34] = true
+      this.cells[23][33] = true
+      this.cells[24][34] = true
+    },
+
+    msgInABottle () {
+      this.softClear()
+      this.cells[26][33] = true
+      this.cells[27][33] = true
+      this.cells[27][34] = true
+      this.cells[26][35] = true
+      this.cells[25][35] = true
+      this.cells[25][34] = true
+      this.cells[22][33] = true
+      this.cells[21][33] = true
+      this.cells[21][32] = true
+      this.cells[21][31] = true
+      this.cells[20][31] = true
+      this.cells[19][32] = true
+      this.cells[18][31] = true
+      this.cells[18][30] = true
+      this.cells[19][29] = true
+      this.cells[20][29] = true
+      this.cells[21][28] = true
+      this.cells[21][27] = true
+      this.cells[22][26] = true
+      this.cells[23][26] = true
+      this.cells[24][27] = true
+      this.cells[23][28] = true
+      this.cells[23][29] = true
+      this.cells[24][29] = true
+      this.cells[25][29] = true
+      this.cells[25][30] = true
+      this.cells[28][30] = true
+      this.cells[28][29] = true
+      this.cells[29][29] = true
+      this.cells[30][29] = true
+      this.cells[30][28] = true
+      this.cells[29][27] = true
+      this.cells[30][26] = true
+      this.cells[31][26] = true
+      this.cells[32][27] = true
+      this.cells[32][28] = true
+      this.cells[33][29] = true
+      this.cells[34][29] = true
+      this.cells[35][30] = true
+      this.cells[35][31] = true
+      this.cells[34][32] = true
+      this.cells[33][31] = true
+      this.cells[32][31] = true
+      this.cells[32][32] = true
+      this.cells[32][33] = true
+      this.cells[31][33] = true
+      this.cells[31][36] = true
+      this.cells[32][36] = true
+      this.cells[32][37] = true
+      this.cells[32][38] = true
+      this.cells[33][38] = true
+      this.cells[34][37] = true
+      this.cells[35][38] = true
+      this.cells[35][39] = true
+      this.cells[34][40] = true
+      this.cells[33][40] = true
+      this.cells[32][41] = true
+      this.cells[32][42] = true
+      this.cells[31][43] = true
+      this.cells[30][43] = true
+      this.cells[29][42] = true
+      this.cells[30][41] = true
+      this.cells[30][40] = true
+      this.cells[29][40] = true
+      this.cells[28][40] = true
+      this.cells[28][39] = true
+      this.cells[25][39] = true
+      this.cells[25][40] = true
+      this.cells[24][40] = true
+      this.cells[23][40] = true
+      this.cells[23][41] = true
+      this.cells[24][42] = true
+      this.cells[23][43] = true
+      this.cells[22][43] = true
+      this.cells[21][42] = true
+      this.cells[21][41] = true
+      this.cells[20][40] = true
+      this.cells[19][40] = true
+      this.cells[18][39] = true
+      this.cells[18][38] = true
+      this.cells[19][37] = true
+      this.cells[20][38] = true
+      this.cells[21][38] = true
+      this.cells[21][37] = true
+      this.cells[21][36] = true
+      this.cells[22][36] = true
     }
   }
 }
