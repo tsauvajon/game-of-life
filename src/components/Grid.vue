@@ -1,6 +1,5 @@
 <template>
 <center>
-  <strong>wave : {{ generation }}</strong>
   <div class="board">
     <div class="row" v-for="(row, i) in cells" :key="i">
       <span
@@ -15,6 +14,7 @@
     </div>
   </div>
   <div class="controls">
+    <strong>wave : {{ generation }}</strong>&nbsp;
     <button @click="next"><img src="../assets/skip-forward.svg" height="20" />&nbsp;<span>NEXT WAVE</span></button>
     <button v-if="interval" @click="stop"><img src="../assets/pause.svg" height="20" />&nbsp;<span>STOP</span></button>
     <button v-else @click="auto"><img src="../assets/play.svg" height="20" />&nbsp;<span>PLAY</span></button>
@@ -51,11 +51,12 @@
     <button @click="msgInABottle">Ship in a bottle</button>
     <button @click="schickEngine">Schick engine</button>
     <button @click="blinkerShip">Blinker ship</button>
+    <br><br>
   </div>
   <div class="saves">
     <button @click="load">Load</button>
+    <textarea placeholder="Insert .lif 1.06 content and load" v-model="lifData" />
     <button @click="dump">Dump</button>
-    <textarea v-model="lifData" />
   </div>
 </center>
 </template>
@@ -84,7 +85,29 @@ export default {
     },
 
     load () {
-      console.log(this.lifData)
+      if (!this.lifData) {
+        return
+      }
+
+      this.stop()
+      this.softClear()
+
+      this.lifData.split('\n').forEach(line => {
+        if (line[0] === '#') {
+          return
+        }
+
+        const coords = line.split(' ')
+        if (coords.length !== 2) {
+          return
+        }
+
+        const x = parseInt(coords[0], 10) + width / 2
+        const y = parseInt(coords[1], 10) + height / 2
+
+        this.cells[y][x] = true
+      })
+      this.$forceUpdate()
     },
 
     dump () {
@@ -698,6 +721,10 @@ export default {
   }
   button > img,
   button > span {
+    vertical-align: middle;
+  }
+  .saves > button,
+  .saves > textarea {
     vertical-align: middle;
   }
 </style>
