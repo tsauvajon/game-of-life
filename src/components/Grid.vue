@@ -33,6 +33,7 @@
     <button @click="blinker">Blinker</button>
     <button @click="toad">Toad</button>
     <button @click="beacon">Beacon</button>
+    <button @click="phoenix">Phoenix</button>
     <button @click="pulsar">Pulsar</button>
     <button @click="pentadecathlon">Pentadecathlon</button>
     &nbsp;|&nbsp;
@@ -42,11 +43,14 @@
     <button @click="rPentomino">R-Pentomino</button>
     <button @click="diehard">Diehard</button>
     <button @click="acorn">Acorn</button>
+    <button @click="butterfly">Butterfly</button>
     &nbsp;|&nbsp;
     <button @click="gliderGun">Gosper Glider gun</button>
     <button @click="lineBeacon">Line to beacon</button>
     <button @click="switchEngine">Switch engine</button>
     <button @click="msgInABottle">Ship in a bottle</button>
+    <button @click="schickEngine">Schick engine</button>
+    <button @click="blinkerShip">Blinker ship</button>
   </div>
 </center>
 </template>
@@ -211,6 +215,22 @@ export default {
       this.cells[21][40] = true
     },
 
+    phoenix () {
+      this.softClear()
+      this.cells[16][29] = true
+      this.cells[16][30] = true
+      this.cells[18][30] = true
+      this.cells[19][32] = true
+      this.cells[20][32] = true
+      this.cells[19][34] = true
+      this.cells[17][35] = true
+      this.cells[17][36] = true
+      this.cells[15][35] = true
+      this.cells[14][33] = true
+      this.cells[13][33] = true
+      this.cells[14][31] = true
+    },
+
     pulsar () {
       this.softClear()
       this.cells[19][26] = true
@@ -330,6 +350,18 @@ export default {
       this.cells[24][34] = true
       this.cells[24][36] = true
       this.cells[24][35] = true
+    },
+
+    butterfly () {
+      this.softClear()
+      this.cells[22][29] = true
+      this.cells[23][29] = true
+      this.cells[24][29] = true
+      this.cells[23][30] = true
+      this.cells[24][31] = true
+      this.cells[25][30] = true
+      this.cells[25][31] = true
+      this.cells[25][32] = true
     },
 
     gliderGun () {
@@ -481,6 +513,117 @@ export default {
       this.cells[21][37] = true
       this.cells[21][36] = true
       this.cells[22][36] = true
+    },
+
+    schickEngine () {
+      this.softClear()
+      this.cells[14][1 + 58] = true
+      this.cells[15][1 + 58] = true
+      this.cells[16][1 + 58] = true
+      this.cells[16][2 + 58] = true
+      this.cells[16][3 + 58] = true
+      this.cells[16][4 + 58] = true
+      this.cells[15][5 + 58] = true
+      this.cells[13][5 + 58] = true
+      this.cells[13][2 + 58] = true
+      this.cells[17][7 + 58] = true
+      this.cells[17][8 + 58] = true
+      this.cells[17][9 + 58] = true
+      this.cells[18][7 + 58] = true
+      this.cells[18][8 + 58] = true
+      this.cells[19][7 + 58] = true
+      this.cells[19][8 + 58] = true
+      this.cells[19][9 + 58] = true
+      this.cells[18][10 + 58] = true
+      this.cells[18][11 + 58] = true
+      this.cells[20][4 + 58] = true
+      this.cells[20][3 + 58] = true
+      this.cells[20][2 + 58] = true
+      this.cells[20][1 + 58] = true
+      this.cells[21][1 + 58] = true
+      this.cells[22][1 + 58] = true
+      this.cells[23][2 + 58] = true
+      this.cells[23][5 + 58] = true
+      this.cells[21][5 + 58] = true
+      this.cells[17][15 + 58] = true
+      this.cells[16][14 + 58] = true
+      this.cells[16][15 + 58] = true
+      this.cells[17][16 + 58] = true
+      this.cells[19][16 + 58] = true
+      this.cells[19][15 + 58] = true
+      this.cells[20][15 + 58] = true
+      this.cells[20][14 + 58] = true
+      this.cells[18][17 + 58] = true
+      this.cells[18][19 + 58] = true
+      this.cells[18][20 + 58] = true
+      this.cells[18][21 + 58] = true
+    },
+
+    blinkerShip () {
+      this.softClear()
+      this.cells[-7 + 20][-3 + 62] = true
+      this.cells[-7 + 20][-2 + 62] = true
+      this.cells[-7 + 20][-1 + 62] = true
+      this.cells[-7 + 20][0 + 62] = true
+      this.cells[-6 + 20][-3 + 62] = true
+      this.cells[-6 + 20][1 + 62] = true
+      this.cells[-5 + 20][-3 + 62] = true
+      this.cells[-4 + 20][-12 + 62] = true
+      this.cells[-4 + 20][-11 + 62] = true
+      this.cells[-4 + 20][-2 + 62] = true
+      this.cells[-4 + 20][1 + 62] = true
+      this.cells[-3 + 20][-13 + 62] = true
+      this.cells[-3 + 20][-12 + 62] = true
+      this.cells[-3 + 20][-10 + 62] = true
+      this.cells[-3 + 20][-9 + 62] = true
+      this.cells[-2 + 20][-12 + 62] = true
+      this.cells[-2 + 20][-11 + 62] = true
+      this.cells[-2 + 20][-10 + 62] = true
+      this.cells[-2 + 20][-9 + 62] = true
+      this.cells[-2 + 20][-5 + 62] = true
+      this.cells[-1 + 20][-11 + 62] = true
+      this.cells[-1 + 20][-10 + 62] = true
+      this.cells[-1 + 20][-6 + 62] = true
+      this.cells[-1 + 20][-4 + 62] = true
+      this.cells[-1 + 20][-3 + 62] = true
+      this.cells[-1 + 20][6 + 62] = true
+      this.cells[-1 + 20][11 + 62] = true
+      this.cells[-1 + 20][12 + 62] = true
+      this.cells[-1 + 20][13 + 62] = true
+      this.cells[0 + 20][-7 + 62] = true
+      this.cells[0 + 20][-3 + 62] = true
+      this.cells[0 + 20][6 + 62] = true
+      this.cells[0 + 20][11 + 62] = true
+      this.cells[0 + 20][13 + 62] = true
+      this.cells[1 + 20][-11 + 62] = true
+      this.cells[1 + 20][-10 + 62] = true
+      this.cells[1 + 20][-6 + 62] = true
+      this.cells[1 + 20][-4 + 62] = true
+      this.cells[1 + 20][-3 + 62] = true
+      this.cells[1 + 20][6 + 62] = true
+      this.cells[1 + 20][11 + 62] = true
+      this.cells[1 + 20][12 + 62] = true
+      this.cells[1 + 20][13 + 62] = true
+      this.cells[2 + 20][-12 + 62] = true
+      this.cells[2 + 20][-11 + 62] = true
+      this.cells[2 + 20][-10 + 62] = true
+      this.cells[2 + 20][-9 + 62] = true
+      this.cells[2 + 20][-5 + 62] = true
+      this.cells[3 + 20][-13 + 62] = true
+      this.cells[3 + 20][-12 + 62] = true
+      this.cells[3 + 20][-10 + 62] = true
+      this.cells[3 + 20][-9 + 62] = true
+      this.cells[4 + 20][-12 + 62] = true
+      this.cells[4 + 20][-11 + 62] = true
+      this.cells[4 + 20][-2 + 62] = true
+      this.cells[4 + 20][1 + 62] = true
+      this.cells[5 + 20][-3 + 62] = true
+      this.cells[6 + 20][-3 + 62] = true
+      this.cells[6 + 20][1 + 62] = true
+      this.cells[7 + 20][-3 + 62] = true
+      this.cells[7 + 20][-2 + 62] = true
+      this.cells[7 + 20][-1 + 62] = true
+      this.cells[7 + 20][0 + 62] = true
     }
   }
 }
