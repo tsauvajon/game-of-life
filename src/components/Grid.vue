@@ -79,7 +79,7 @@ export default {
 
   methods: {
     toggle (i, j) {
-      console.log(`this.cells[${i}][${j}] = ${!this.cells[i][j]}`)
+      // console.log(`this.cells[${i}][${j}] = ${!this.cells[i][j]}`)
       this.cells[i][j] = !this.cells[i][j]
       this.$forceUpdate()
     },
@@ -118,30 +118,58 @@ export default {
     },
 
     next () {
-      this.cells = this.cells.map((row, i) =>
-        row.map((val, j) => {
+      const countNeighbours = (i, j) => {
+        let count = 0
+        for (let a = -1; a <= 1; a++) {
+          for (let b = -1; b <= 1; b++) {
+            if (a === 0 && b === 0) {
+              continue
+            }
+
+            if (this.cells[i + a] && this.cells[i + a][j + b]) {
+              count++
+            }
+          }
+        }
+        return count
+      }
+      const newCells = Array.from(Array(height), x => Array.from(Array(width), y => false))
+      const done = {}
+      this.cells.forEach((row, i) => {
+        row.forEach((val, j) => {
+          if (!val) {
+            return
+          }
           let count = 0
-          // to check :
-          // -1 -1 | -1 0 | -1 1 | 0 -1 | 0 1 | 1 -1 | 1 0 | 1 1
           for (let a = -1; a <= 1; a++) {
             for (let b = -1; b <= 1; b++) {
               if (a === 0 && b === 0) {
                 continue
               }
 
-              if (this.cells[i + a] && this.cells[i + a][j + b]) {
-                count++
+              if (!this.cells[i + a]) {
+                continue
               }
+
+              if (this.cells[i + a][j + b]) {
+                count++
+                continue
+              } else if (done[`${i + a},${j + b}`]) {
+                continue
+              }
+              const cellCount = countNeighbours(i + a, j + b)
+              if (cellCount === 3) {
+                newCells[i + a][j + b] = true
+              }
+              done[`${i + a},${j + b}`] = true
             }
           }
-          if (!val && count === 3) {
-            return true
+          if (count === 2 || count === 3) {
+            newCells[i][j] = true
           }
-          if (val && count !== 2 && count !== 3) {
-            return false
-          }
-          return val
-        }))
+        })
+      })
+      this.cells = newCells
       this.generation += 1
     },
 
