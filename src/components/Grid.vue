@@ -113,7 +113,7 @@ export default {
     dump () {
       const lifData = this.cells.reduce((acc, row, i) =>
         `${acc}${row.reduce((acc2, cell, j) => cell ? `${acc2}${j - (width / 2)} ${i - (height / 2)}\n` : acc2, '')}`,
-      '')
+      '#Life 1.06\n')
       this.lifData = lifData
     },
 
