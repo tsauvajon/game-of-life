@@ -1,18 +1,5 @@
 <template>
 <center>
-  <div class="board">
-    <div class="row" v-for="(row, i) in cells" :key="i">
-      <span
-        class="cell"
-        :style="`background: ${ cells[i][j] ? '#c576db' : '#fff' }`"
-        v-for="(cell, j) in row"
-        :key="j"
-        @click="toggle(i, j)"
-      >
-        &nbsp;
-      </span>
-    </div>
-  </div>
   <div class="controls">
     <strong>wave : {{ generation }}</strong>&nbsp;
     <button @click="next"><img src="../assets/skip-forward.svg" height="20" />&nbsp;<span>NEXT WAVE</span></button>
@@ -58,12 +45,25 @@
     <textarea placeholder="Insert .lif 1.06 content and load" v-model="lifData" />
     <button @click="dump">Dump</button>
   </div>
+  <div class="board">
+    <div class="row" v-for="(row, i) in cells" :key="i">
+      <span
+        class="cell"
+        :style="`background: ${ cells[i][j] ? '#c576db' : '#fff' }`"
+        v-for="(cell, j) in row"
+        :key="j"
+        @click="toggle(i, j)"
+      >
+        &nbsp;
+      </span>
+    </div>
+  </div>
 </center>
 </template>
 
 <script>
 const width = 80
-const height = 50
+const height = 40
 const empty = Array.from(Array(height), x => Array.from(Array(width), y => false))
 
 export default {
